@@ -54,21 +54,7 @@ namespace Kalkulator2
                         if (input.Contains(")"))
                         {
                             int closedBracketIndex = input.IndexOf(")");
-                            string before = input.Substring(0, openBracketIndex);
-                            string bracket = input.Substring(openBracketIndex + 1, closedBracketIndex - openBracketIndex - 1);
-                            string after = input.Substring(closedBracketIndex + 1);
-                            Console.WriteLine($"Before bracket: {before}");
-                            Console.WriteLine($"Bracket: {bracket}");
-                            Console.WriteLine($"After bracket: {after}");
-                            if (openBracketIndex > 0 && !checkCharacters(Convert.ToString(input[openBracketIndex - 1]), onlyOperatrors))
-                            { // Jeżeli przed otwarciem nawiasu nie ma operatora
-                                before = before + "*";
-                            }
-                            if (closedBracketIndex < input.Length - 1 && !checkCharacters(Convert.ToString(input[closedBracketIndex + 1]), onlyOperatrors))
-                            { // Jeżeli po zamknięciu nawiasu nie ma operatora
-                                after = "*" + after;
-                            }
-                            return calculate(before + calculate(bracket) + after);
+                            
 
                         }
                         else
