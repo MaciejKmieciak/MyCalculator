@@ -21,7 +21,7 @@ namespace Kalkulator2
         }
         private static double calculate(string input)
         {
-            Console.WriteLine($"Wejście: {input}");
+            Console.WriteLine($"Input: {input}");
             char[] allowedCharacters = 
             {
                 '1','2','3','4','5','6','7','8','9','0',
@@ -57,9 +57,9 @@ namespace Kalkulator2
                             string before = input.Substring(0, openBracketIndex);
                             string bracket = input.Substring(openBracketIndex + 1, closedBracketIndex - openBracketIndex - 1);
                             string after = input.Substring(closedBracketIndex + 1);
-                            Console.WriteLine($"Przed nawiasem: {before}");
-                            Console.WriteLine($"Nawias: {bracket}");
-                            Console.WriteLine($"Po nawiasie: {after}");
+                            Console.WriteLine($"Before bracket: {before}");
+                            Console.WriteLine($"Bracket: {bracket}");
+                            Console.WriteLine($"After bracket: {after}");
                             if (openBracketIndex > 0 && !checkCharacters(Convert.ToString(input[openBracketIndex - 1]), onlyOperatrors))
                             { // Jeżeli przed otwarciem nawiasu nie ma operatora
                                 before = before + "*";
@@ -73,7 +73,7 @@ namespace Kalkulator2
                         }
                         else
                         {
-                            Console.Write("Brak zamknięcia nawiasu ");
+                            Console.Write("Error: no closing bracket. ");
                             return -1;
                         }
 
@@ -137,13 +137,13 @@ namespace Kalkulator2
                             return Math.Pow(calculate(arg1), calculate(arg2));
                         }
 
-                        Console.Write("Brak liczby w podstawie potęgi ");
+                        Console.Write("Error: no power base entered. ");
                         return -1;
                     }
 
                     else
                     {
-                        Console.Write("Nieznany operator ");
+                        Console.Write("Error: unknown operator. ");
                         return -1;
                     }
                 }
@@ -151,7 +151,7 @@ namespace Kalkulator2
             }
             else
             {
-                Console.Write("Niedozwolone znaki");
+                Console.Write("Error: not allowed characters detected. ");
                 return -1;
             }
                 /*if (checkCharacters(input, onlyNumbers))
@@ -163,7 +163,7 @@ namespace Kalkulator2
         }
         static void Main(string[] args)
         {
-            Console.Write("Twoje działanie: ");
+            Console.Write("Your expression: ");
             string input = Console.ReadLine();
             Console.WriteLine(calculate(input));
         }
